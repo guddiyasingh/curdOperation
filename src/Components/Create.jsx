@@ -1,20 +1,26 @@
 import React, { use, useState } from 'react'
+import  useNavigate from "react-router-dom"
+import axios from "axios";
+
 
 const Create = () => {
+const[name, setName] = useState("");
+const[email, setEmail] = useState('');
+const history = useNavigate();
 
-const[name, setName] = useState("")
-const[email, setEmail] = useState('')
+const header = {"Access-control-Allow-Origin": "*"};
 
-const handleSubmit = () => {
 
-  axios.post(
+const handleSubmit = (e) => {
 
-    ("https://67e0f06458cc6bf7852377d5.mockapi.io/curd",{
-      name: name,
-      email:email,
-      header,
-    })
-  )
+  e.preventDefault();
+console.log("clicked");
+  axios.post("https://67e0f06458cc6bf7852377d5.mockapi.io/curd",{
+      name:  name,
+      email: email,
+      header ,
+    });
+  ;
 }
   
   return (
@@ -22,31 +28,26 @@ const handleSubmit = () => {
    <h2>Create</h2>
    <form>
   <div className="mb-3">
-    <label for="exampleInputEmail1" className="form-label">Email address</label>
-    <input 
-    type="email"
-     className="form-control"
-      aria-describedby="emailHelp"
-      onChange={(e)=>setEmail(e.target.value)}
-      />
+  
    
   </div>
   <div className="mb-3">
-    <label for="exampleInputName" className="form-label">Name</label>
+    <label htmlFor="exampleInputName" className="form-label">Name</label>
     <input type="text" 
     className="form-control" 
     onChange={(e)=>setName(e.target.value)}
     />
   </div>
 
-  
-  <div className="mb-3 form-check">
+  <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
     <input 
-    type="checkbox" 
-    className="form-check-input" 
-    />
-    <label className="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
+    type="email"
+     className="form-control"
+      aria-describedby="emailHelp"
+      onChange={(e)=>setEmail(e.target.value)}
+      />
+  
+  
   <button type="submit" 
   className="btn btn-primary"
   onClick={handleSubmit}
