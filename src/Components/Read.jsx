@@ -4,7 +4,7 @@ import React , {useState, useEffect} from 'react'
 
 const Read = () => {
 
-const [data ,setData] = useState()
+const [data ,setData] = useState([])
 
 function getData() {
 
@@ -16,7 +16,7 @@ function getData() {
 }
 useEffect(() =>{
   getData();
-},[data] );
+},[]);
 
   return (
     <>
@@ -31,26 +31,20 @@ useEffect(() =>{
       <th scope="col"></th>
     </tr>
   </thead>
-  {   
 
-   data.map((eachData) => {
-    return (
-      <>
        <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Name</td>
-      <td>@Email</td>
-      <td><button className='btn-success'>Edit</button></td>
-      <td ><button className='btn-danger'>Delete</button></td>
-    </tr>
+       {data.map((eachData, index) => (
+      <tr key={eachData.id}>  
+        <th scope="row">{index + 1}</th>
+        <td>{eachData.name}</td>
+        <td>{eachData.email}</td>
+        <td><button className="btn-success">Edit</button></td>
+        <td><button className="btn-danger">Delete</button></td>
+      </tr>
+    ))}
+      
    </tbody>
-      </>
-    )
-   })
- 
-   
-   }
+      
 </table>
     </>
   )

@@ -15,14 +15,17 @@ const handleSubmit = (e) => {
 
   e.preventDefault();
 console.log("clicked");
-  axios.post("https://67e0f06458cc6bf7852377d5.mockapi.io/curd",{
+  axios
+  .post("https://67e0f06458cc6bf7852377d5.mockapi.io/curd",{
       name:  name,
       email: email,
       header ,
-    });
-  history("/read")
-}
-  
+    })
+
+     .then(() => {
+      history("/read");
+     });
+    };
   return (
    <>
    <h2>Create</h2>
