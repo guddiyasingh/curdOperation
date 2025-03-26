@@ -14,6 +14,10 @@ function getData() {
          setData(res.data)
         })
 }
+
+function handleDelete(id) {
+  axios.delete("https://67e0f06458cc6bf7852377d5.mockapi.io/curd/${id}");
+}
 useEffect(() =>{
   getData();
 },[]);
@@ -39,7 +43,14 @@ useEffect(() =>{
         <td>{eachData.name}</td>
         <td>{eachData.email}</td>
         <td><button className="btn-success">Edit</button></td>
-        <td><button className="btn-danger">Delete</button></td>
+        <td>
+          <button className="btn-danger" 
+        onClick={()=>handleDelete(eachData.id)}
+        >
+
+        Delete{""}
+        </button>
+        </td>
       </tr>
     ))}
       
