@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react'
-import  useNavigate from "react-router-dom"
+import  {useNavigate} from "react-router-dom"
 import axios from "axios";
 
 
@@ -20,7 +20,7 @@ console.log("clicked");
       email: email,
       header ,
     });
-  ;
+  history("/read")
 }
   
   return (
