@@ -12,11 +12,15 @@ function getData() {
        .then((res) => {
          console.log(res.data);
          setData(res.data)
-        })
+        });
 }
 
 function handleDelete(id) {
-  axios.delete("https://67e0f06458cc6bf7852377d5.mockapi.io/curd/${id}");
+  axios.delete(`https://67e0f06458cc6bf7852377d5.mockapi.io/curd/${id}`
+
+  ).then(() =>{
+    getData()
+  })
 }
 useEffect(() =>{
   getData();
