@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React , {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 
 
 const Read = () => {
@@ -46,7 +47,13 @@ useEffect(() =>{
         <th scope="row">{index + 1}</th>
         <td>{eachData.name}</td>
         <td>{eachData.email}</td>
-        <td><button className="btn-success">Edit</button></td>
+        <td>
+
+          <Link to="/update">
+          <button className="btn-success">Edit</button>
+          </Link>
+         
+          </td>
         <td>
           <button className="btn-danger" 
         onClick={()=>handleDelete(eachData.id)}

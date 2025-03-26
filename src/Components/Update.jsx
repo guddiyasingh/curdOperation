@@ -3,6 +3,7 @@ import React from 'react'
 const Update = () => {
   return (
     <>
+    <h2>Update</h2>
        <form>
   <div className="mb-3">
   
@@ -28,7 +29,7 @@ const Update = () => {
   <button type="submit" 
   className="btn btn-primary"
   onClick={handleSubmit}
-     >Submit</button>
+     >Update </button>
 </form>
     </>
   )
