@@ -28,7 +28,10 @@ console.log("clicked");
     };
   return (
    <>
+   <div className='d-flex justify-content-between m-2'>
    <h2>Create</h2>
+   <button className='btn btn-primary'>show Data</button>
+   </div>
    <form>
   <div className="mb-3">
   
