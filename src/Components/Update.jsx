@@ -1,19 +1,35 @@
 import React from 'react'
-
+import  {useState, useEffect} from 'react'
+import  {useNavigate} from "react-router-dom"
+import axios from "axios";
 const Update = () => {
 
   const [id , setId] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-
+  const navigate = useNavigate();
 
   useEffect(() =>{
 
     setId(localStorage.getItem("id"));
-    setId(localStorage.getItem("name"));
-    setId(localStorage.getItem("email"));
-  })
+    setName(localStorage.getItem("name"));
+    setEmail(localStorage.getItem("email"));
+  },[]);
+ 
+const handleUpdate = (e) => {
+
+    e.preventDefault();  
+    console.log("Id...",id)
+   axios.put(`https://67e0f06458cc6bf7852377d5.mockapi.io/curd/${id}`,
+{
+   name:  name,
+   email: email,
+   }) 
+   .then(() =>{
+    navigate("/read");
+  });
+};
 
   return (
     <>
@@ -24,26 +40,30 @@ const Update = () => {
    
   </div>
   <div className="mb-3">
-    <label htmlFor="exampleInputName" className="form-label">Name</label>
+    <label
+     className="form-label">Name</label>
     <input type="text" 
     className="form-control" 
+    value={name}
     onChange={(e)=>setName(e.target.value)}
 
     />
   </div>
 
-  <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+  <label 
+
+  className="form-label">Email address</label>
     <input 
     type="email"
      className="form-control"
-      aria-describedby="emailHelp"
+      value={email}
       onChange={(e)=>setEmail(e.target.value)}
       />
   
   
   <button type="submit" 
   className="btn btn-primary"
-//   onClick={handleSubmit}
+  onClick={handleUpdate}
      >Update </button>
 </form>
     </>
