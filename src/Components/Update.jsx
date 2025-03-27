@@ -1,6 +1,20 @@
 import React from 'react'
 
 const Update = () => {
+
+  const [id , setId] = useState(0);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+
+
+  useEffect(() =>{
+
+    setId(localStorage.getItem("id"));
+    setId(localStorage.getItem("name"));
+    setId(localStorage.getItem("email"));
+  })
+
   return (
     <>
     <h2>Update</h2>
@@ -14,6 +28,7 @@ const Update = () => {
     <input type="text" 
     className="form-control" 
     onChange={(e)=>setName(e.target.value)}
+
     />
   </div>
 
@@ -28,7 +43,7 @@ const Update = () => {
   
   <button type="submit" 
   className="btn btn-primary"
-  onClick={handleSubmit}
+//   onClick={handleSubmit}
      >Update </button>
 </form>
     </>

@@ -23,6 +23,14 @@ function handleDelete(id) {
     getData()
   })
 }
+
+const setToLocalStorage = (id, name, email) => {
+
+    localStorage.setItem("id",id)
+    localStorage.setItem("name",name)
+    localStorage.setItem("email",email)
+   
+}
 useEffect(() =>{
   getData();
 },[]);
@@ -50,7 +58,15 @@ useEffect(() =>{
         <td>
 
           <Link to="/update">
-          <button className="btn-success">Edit</button>
+          <button className="btn-success"
+          onClick={()=> setToLocalStorage(
+            eachData.id,
+            eachData.name,
+            eachData.email
+
+          )}
+          
+          >Edit</button>
           </Link>
          
           </td>
