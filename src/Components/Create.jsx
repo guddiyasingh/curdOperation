@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react'
 import  {useNavigate} from "react-router-dom"
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 
 const Create = () => {
@@ -30,7 +31,9 @@ console.log("clicked");
    <>
    <div className='d-flex justify-content-between m-2'>
    <h2>Create</h2>
+   <Link to="/read">
    <button className='btn btn-primary'>show Data</button>
+   </Link>
    </div>
    <form>
   <div className="mb-3">

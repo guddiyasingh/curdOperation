@@ -2,6 +2,8 @@ import React from 'react'
 import  {useState, useEffect} from 'react'
 import  {useNavigate} from "react-router-dom"
 import axios from "axios";
+import { Link } from 'react-router-dom';
+
 const Update = () => {
 
   const [id , setId] = useState(0);
@@ -62,9 +64,14 @@ const handleUpdate = (e) => {
   
   
   <button type="submit" 
-  className="btn btn-primary"
+  className="btn btn-primary mx-2"
   onClick={handleUpdate}
      >Update </button>
+
+<Link to ="/read">
+<button className="btn btn-secondary  mx-2" >Back</button>
+</Link>
+
 </form>
     </>
   )

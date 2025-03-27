@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Read = () => {
 
-const [data ,setData] = useState([])
+const [data ,setData] = useState([]);
+const [tabledark , setTableDark] = useState('')
 
 function getData() {
 
@@ -37,8 +38,25 @@ useEffect(() =>{
 
   return (
     <>
-    <h2>Read Operation</h2>
-     <table class="table">
+<div className="form-check form-switch">
+  <input className="form-check-input" type="checkbox" 
+  role="switch" id="flexSwitchCheckDefault"
+  onClick={() =>{
+if(tabledark === "table-dark") setTableDark("");
+else setTableDark("table-dark");
+
+  }}
+  />
+</div>
+
+
+    <div className='d-flex justify-content-between m-2'>
+      <h2>Read Operation</h2>
+      <Link to="/">
+      <button className='btn btn-secondary'>create</button>
+      </Link>
+      </div>
+     <table className={`table ${tabledark}`}>
   <thead>
     <tr>
       <th scope="col">#</th>
